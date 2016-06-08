@@ -3,7 +3,6 @@
   <groupId>Trignex</groupId>
   <artifactId>Trignex</artifactId>
   <version>0.0.5</version>
-  <packaging>war</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -13,10 +12,13 @@
           <exclude>**/*.java</exclude>
         </excludes>
       </resource>
-    </resources>    
+    </resources>  
+    
+    <finalName>Trignex</finalName>  
     
     <plugins>
       <plugin>
+      	<groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.3</version>
         <configuration>
@@ -61,6 +63,28 @@
         	<artifactId>heroku-maven-plugin</artifactId>
        	 	<version>1.0.3</version>
       	</plugin>
+      	
+      	 <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-eclipse-plugin</artifactId>
+			<version>2.9</version>
+			<configuration>
+			        <!-- Always download and attach dependencies source code -->
+				<downloadSources>true</downloadSources>
+				<downloadJavadocs>false</downloadJavadocs>
+				<!-- Avoid type mvn eclipse:eclipse -Dwtpversion=2.0 -->
+				<wtpversion>2.0</wtpversion>
+			</configuration>
+		  </plugin>
+      	
+      	<plugin>
+			<groupId>org.apache.tomcat.maven</groupId>
+			<artifactId>tomcat8-maven-plugin</artifactId>
+			<version>2.2</version>
+			<configuration>
+				<path>/Trignex</path>
+			</configuration>
+		  </plugin>
         
     </plugins>
     
@@ -86,4 +110,5 @@
 		    <version>3.1.0</version>
 		</dependency>
   </dependencies>
+  <packaging>war</packaging>
 </project>
